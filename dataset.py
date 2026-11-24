@@ -62,14 +62,18 @@ def parse_label(label_path: Path, img_w: int, img_h: int) -> list[dict]:
     return boxes
 
 
-def draw_boxes(image: np.ndarray, boxes: list[dict]) -> np.ndarray:
-    """Draw ground-truth boxes (green) on a copy of the image."""
+def draw_boxes(
+    image: np.ndarray,
+    boxes: list[dict],
+    color: tuple[int, int, int] = (0, 255, 0),
+) -> np.ndarray:
+    """Draw boxes on a copy of the image. Color is BGR, default green."""
     result = image.copy()
     for box in boxes:
-        name = COCO_CLASSES[box["class_id"]]
-        cv2.rectangle(result, (box["x1"], box["y1"]), (box["x2"], box["y2"]), (0, 255, 0), 2)
+        name = box.get("label") or COCO_CLASSES[box["class_id"]]
+        cv2.rectangle(result, (box["x1"], box["y1"]), (box["x2"], box["y2"]), color, 2)
         cv2.putText(result, name, (box["x1"], box["y1"] - 5),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
     return result
 
 

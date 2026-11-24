@@ -13,3 +13,6 @@ runs/
 
 # datasets (downloaded at runtime, too large for git)
 datasets/
+
+# generated evaluation output
+eval_output/
