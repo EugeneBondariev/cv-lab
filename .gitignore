@@ -19,3 +19,6 @@ eval_output/
 
 # generated augmentation output
 augment_output/
+
+# generated synthetic dataset
+synthetic_output/
