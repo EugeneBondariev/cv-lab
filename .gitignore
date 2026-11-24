@@ -10,3 +10,6 @@ __pycache__/
 
 # ultralytics run artifacts
 runs/
+
+# datasets (downloaded at runtime, too large for git)
+datasets/
