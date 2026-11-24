@@ -16,3 +16,6 @@ datasets/
 
 # generated evaluation output
 eval_output/
+
+# generated augmentation output
+augment_output/
